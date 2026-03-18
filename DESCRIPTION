@@ -1,11 +1,16 @@
 Package: LDeconv
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Type: Package
+Title: PRISM: Pleiotropic Relationships to Infer the SNP Model
+Version: 0.0.9
+Authors@R: person("Martin", "Tournaire", email = "martin.tournaire@curie.fr",
+                  role = c("aut", "cre"))
+Description: LDeconv takes as input GWAS summary statistics and outputs LD-adjusted summary statistics
+LazyData: true
+Imports:
+    data.table,
+    R.utils,
+    reticulate
+License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3

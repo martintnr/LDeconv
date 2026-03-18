@@ -45,6 +45,7 @@ library(R.utils)
 library(data.table)
 library(reticulate)
 #library(parallel)
+
 py_require("scipy")
 scipy_sparse <- import("scipy.sparse", convert = FALSE)
 py_gc <- import("gc", convert = FALSE)
