@@ -74,7 +74,7 @@ deconvolution_computation <- function(X, DATA, ld_inverse_dir){
   # Compute the deconvolved test statistics by matrix-vector multiplication, through python
 
 
-  Central <- merge(Central, Window[,c("variant", "tstat_LDeconv")], by = c("variant"), sort = F)
+  Central$tstat_LDeconv <- Window$tstat_LDeconv[match(Central$variant, Window$variant)]
   # Retain only deconvolved test statistics corresponding to variants in the central block, which are the target output of the computation.
 
 

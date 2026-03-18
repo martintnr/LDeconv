@@ -20,18 +20,18 @@ sumstats_deconvolution(
 \item{tstat}{Numeric vector of test statistics to be deconvolved.}
 }}
 
+\item{ld_inverse_dir}{Path to the directory containing the LD inverse matrices.
+These files can be downloaded from Zenodo at \code{zenodo/abcd.fr}.}
+
+\item{index}{A variant index based on hg19 coordinates, used to match the
+variants in \code{sumstats} to their corresponding positions in the LD inverse
+matrices. This file can be downloaded from Zenodo at \code{zenodo/abcd.fr}.}
+
 \item{parallel}{Indicating whether block-wise computation
 should be performed in parallel using \code{parallel::mclapply()}.
 Parallel computation might be RAM expensive.}
 
 \item{nbcores}{Number of CPU cores to use when \code{parallel = TRUE}.}
-
-\item{LDinverseFolder}{Path to the directory containing the LD inverse matrices.
-These files can be downloaded from Zenodo at \code{zenodo/abcd.fr}.}
-
-\item{Index}{A variant index based on hg19 coordinates, used to match the
-variants in \code{sumstats} to their corresponding positions in the LD inverse
-matrices. This file can be downloaded from Zenodo at \code{zenodo/abcd.fr}.}
 }
 \value{
 A data frame containing, for each processed variant, the index,

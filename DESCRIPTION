@@ -1,6 +1,6 @@
 Package: LDeconv
 Type: Package
-Title: PRISM: Pleiotropic Relationships to Infer the SNP Model
+Title: LDeconv : Obtaining LD-adjusted summary statistics through linkage disequilibrium deconvolution
 Version: 0.0.9
 Authors@R: person("Martin", "Tournaire", email = "martin.tournaire@curie.fr",
                   role = c("aut", "cre"))

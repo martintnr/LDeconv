@@ -10,10 +10,10 @@
 #'     \item{tstat}{Numeric vector of test statistics to be deconvolved.}
 #'   }
 #'
-#' @param LDinverseFolder Path to the directory containing the LD inverse matrices.
+#' @param ld_inverse_dir Path to the directory containing the LD inverse matrices.
 #' These files can be downloaded from Zenodo at `zenodo/abcd.fr`.
 #'
-#' @param Index A variant index based on hg19 coordinates, used to match the
+#' @param index A variant index based on hg19 coordinates, used to match the
 #'   variants in `sumstats` to their corresponding positions in the LD inverse
 #'   matrices. This file can be downloaded from Zenodo at `zenodo/abcd.fr`.
 #'
@@ -30,19 +30,23 @@ sumstats_deconvolution <- function(sumstats, ld_inverse_dir, index, parallel=F, 
   DATA <- merge(index, sumstats, by = "variant",
                  all.x = TRUE, all.y = F, sort = F)
   DATA <- as.data.frame(DATA)
+  if(sum(DATA$variant == index$variant)!=nrow(DATA)){message("PROBLEM: index and data mismatch")}
 
   # Construct the summary statistics matrix for deconvolution after matching input variants to the variant index.
   # Variants present in `sumstats` but absent from `index` are excluded.
 
+  key <- interaction(DATA$chromosome, DATA$block, drop = TRUE)
   pairs <- unique(DATA[c("chromosome", "block")])
-  hit <- aggregate(!is.na(tstat) ~ chromosome + block, DATA, any)
-  colnames(hit)[3] <- "hit"
-  pairs <- merge(pairs, hit, by = c("chromosome", "block"), all.x = TRUE, sort = FALSE)
+  pairs <- pairs[order(pairs$chromosome, pairs$block), ]
+  pairs$hit <- tapply(!is.na(DATA$tstat), key, any)[
+    interaction(pairs$chromosome, pairs$block, drop = TRUE)]
   pairs$hit[is.na(pairs$hit)] <- FALSE
-  pairs$keep <- with(pairs,ave(hit, chromosome, FUN = function(z){
-    z | c(FALSE, head(z, -1)) | c(tail(z, -1), FALSE)}))
-  DATA <- merge(DATA, pairs[pairs$keep, c("chromosome", "block")],
-                by = c("chromosome", "block"),sort = F)
+  pairs$keep <- with(pairs, ave(hit, chromosome, FUN = function(z) {
+    z | c(FALSE, z[-length(z)]) | c(z[-1], FALSE)
+  }))
+  DATA <- DATA[
+    key %in% interaction(pairs$chromosome[pairs$keep],
+                         pairs$block[pairs$keep], drop = TRUE),]
 
 
   # Retain only chromosome-block units containing at least one observed test statistic, together with their immediately adjacent blocks.
@@ -53,8 +57,8 @@ sumstats_deconvolution <- function(sumstats, ld_inverse_dir, index, parallel=F, 
 
 
   if(parallel == TRUE){
-  DATA <- mclapply(c(1:length(DATA)), FUN = deconvolution_computation, DATA=DATA, ld_inverse_dir, mc.cores=nbcores)
-  }else{ DATA <- lapply(X = c(3809:3814),FUN = deconvolution_computation, DATA=DATA, ld_inverse_dir)
+  DATA <- mclapply(X = c(1:length(DATA)), FUN = deconvolution_computation, DATA=DATA, ld_inverse_dir, mc.cores=nbcores)
+  }else{ DATA <- lapply(X = c(1:length(DATA)),FUN = deconvolution_computation, DATA=DATA, ld_inverse_dir)
   }
   # Perform block-wise deconvolution, optionally in parallel across `nbcores` using `parallel::mclapply()`.
 
