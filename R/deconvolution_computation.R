@@ -16,7 +16,7 @@
 #'   the variant identifier, the original test statistic, and the deconvolved
 #'   test statistic. Returns `NULL` if the block contains no observed test
 #'   statistics or if a matrix dimension mismatch is encountered.
-#'
+#' @export
 deconvolution_computation <- function(X, DATA, ld_inverse_dir){
 
   LDinv <- NULL

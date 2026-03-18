@@ -45,6 +45,7 @@ library(R.utils)
 library(data.table)
 library(reticulate)
 #library(parallel)
+library(LDeconv)
 
 py_require("scipy")
 scipy_sparse <- import("scipy.sparse", convert = FALSE)
@@ -57,7 +58,7 @@ if(!grepl("LDeconv_ToyExample", getwd(), fixed = TRUE)){
   setwd("LDeconv_ToyExample")}
 system("wget https://zenodo.org/records/19071985/files/chr19_LD_inv_BD_86.npz")
 system("wget https://zenodo.org/records/19071985/files/Index_LDeconv.csv")
-system("https://zenodo.org/records/19071985/files/ToyExample_Triglycerides.csv")
+system("wget https://zenodo.org/records/19071985/files/ToyExample_Triglycerides.csv")
 # Creates a new directory and download the necessary files from Zenodo, <200 MB
 
 

@@ -25,6 +25,7 @@
 #'
 #' @returns A data frame containing, for each processed variant, the index,
 #'   the original test statistic, and the deconvolved test statistic.
+#' @export
 sumstats_deconvolution <- function(sumstats, ld_inverse_dir, index, parallel=F, nbcores = 1){
 
   DATA <- merge(index, sumstats, by = "variant",
