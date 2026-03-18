@@ -27,7 +27,7 @@ if(!"LDeconv" %in% installed.packages()[, "Package"]) {
   devtools::install_github("martintnr/LDeconv") }
 ```
 
-PRISM has been tested on Linux: Ubuntu 22.04.4 LTS and macOS: Tahoe 26.3
+LDeconv has been tested on Linux: Ubuntu 25.10 and macOS: Tahoe 26.3
 
 ## Toy example
 
@@ -80,7 +80,7 @@ Graph <- ggplot()
 print(Graph)
 ```
 
-## Using PRISM
+## Using LDeconv
 
-To use PRISM on real data, please use this
+To use LDeconv on real data, please use this
 [vignette](https://github.com/martintnr/LDeconv/blob/main/vignettes/NotMadeYet).
