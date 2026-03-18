@@ -77,6 +77,7 @@ To visualize a result manhattan plot[example
 graph](https://github.com/martintnr/LDeconv/NotMadeYet) (coming soon):
 
 ``` r
+#install.packages("ggplot2")
 library(ggplot2)
 
 # Compute two-sided p-values from t statistics
