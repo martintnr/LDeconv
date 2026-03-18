@@ -9,10 +9,11 @@
 
 ## Principle of LDeconv
 
-![LDeconv](Github_Fig.png) LDeconv takes as input GWAS summary
-statistics of a trait and outputs deconvoluted LD-adjusted summary
-statistics. Further information can be found in our
-[pre-print](NotOnlineYet), coming soon.
+<!--   ![LDeconv](Github_Fig.png) -->
+
+LDeconv takes as input GWAS summary statistics of a trait and outputs
+deconvoluted LD-adjusted summary statistics. Further information can be
+found in our [pre-print](NotOnlineYet), coming soon.
 
 ## Installation
 
@@ -73,8 +74,8 @@ When run on a single CPU core, `sumstats_deconvolution()` is expected to
 complete in less than a minute. The `Results` data frame contains the
 original and LD-adjusted summary statistics for each processed variant.
 
-To visualize a result manhattan plot[example
-graph](https://github.com/martintnr/LDeconv/NotMadeYet) (coming soon):
+To visualize a result [manhattan
+plot](https://github.com/martintnr/LDeconv/blob/main/ManhattanPlot_ToyExample.png):
 
 ``` r
 #install.packages("ggplot2")
