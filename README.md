@@ -134,5 +134,4 @@ print(Graph)
 ## Using LDeconv
 
 To use LDeconv on real data, please use this
-[vignette](https://github.com/martintnr/LDeconv/blob/main/vignettes/NotMadeYet)
-(coming soon !)
+[vignette](https://github.com/martintnr/LDeconv/blob/main/vignettes/Genome-wide_LDECONV.md)

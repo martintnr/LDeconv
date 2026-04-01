@@ -1,3 +1,5 @@
+# Applying LDeconv to new genome-wide summary statistics
+
 If you are reading this vignette, you likely want to apply LDeconv to
 your own summary statistics. This tutorial explains how to do that step
 by step.
@@ -12,8 +14,7 @@ statistics for chromosome 19 of triglycerides from UK Biobank GWAS round
 2. The goal is to provide a reproducible example that you can easily
 adapt to your own data.
 
-1.  Standard setup: load the packages required to run LDeconv and to
-    read the data.
+## Standard setup: load the packages required to run LDeconv and to read the data.
 
 ``` r
 library(LDeconv)
@@ -29,7 +30,7 @@ py_gc <- import("gc", convert = FALSE)
 # Installing python dependencies
 ```
 
-1.  File download
+## File download
 
 Here, I create a working directory and the required subfolders, then
 download the necessary files:
@@ -68,7 +69,7 @@ system(paste0("rm Inverse_Matrices/chr",chromosome,"_npz.zip"))
 system("mkdir Results")
 ```
 
-1.  Code Execution
+## Code Execution
 
 We can now load the data, run the deconvolution, and save the results.
 

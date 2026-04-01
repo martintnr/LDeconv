@@ -15,13 +15,16 @@ knitr::opts_chunk$set(
 ```
 
 
+# Applying LDeconv to new genome-wide summary statistics
+
+
 If you are reading this vignette, you likely want to apply LDeconv to your own summary statistics. This tutorial explains how to do that step by step.
 
 Conceptually, the workflow is fairly simple. With the functions provided, the core operation is essentially matrix multiplication. In practice, the main challenge is downloading, organizing, and using the genome-wide inverse LD matrices required for the analysis.
 
 In this vignette, we illustrate the procedure by deconvoluting summary statistics for chromosome 19 of triglycerides from UK Biobank GWAS round 2. The goal is to provide a reproducible example that you can easily adapt to your own data.
 
-1) Standard setup: load the packages required to run LDeconv and to read the data.
+## Standard setup: load the packages required to run LDeconv and to read the data.
 
 
 ```{r setup, eval = FALSE}
@@ -42,7 +45,7 @@ py_gc <- import("gc", convert = FALSE)
 
 
 
-2) File download
+## File download
 
 Here, I create a working directory and the required subfolders, then download the necessary files:
 
@@ -78,7 +81,7 @@ system("mkdir Results")
 
 
 
-3) Code Execution
+## Code Execution
 
 We can now load the data, run the deconvolution, and save the results.
 
