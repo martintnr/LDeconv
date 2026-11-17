@@ -13,7 +13,7 @@
 
 LDeconv takes as input GWAS summary statistics of a trait and outputs
 deconvoluted LD-adjusted summary statistics. Further information can be
-found in our [pre-print](https://www.medrxiv.org/content/10.64898/2026.04.10.26350574v1).
+found in our [pre-print](https://doi.org/10.64898/2026.04.10.26350574).
 
 ## Installation
 
