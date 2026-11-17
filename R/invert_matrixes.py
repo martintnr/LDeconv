@@ -61,7 +61,7 @@ def build_refined_triplets(categories):
 
 # Invert a single LD block and save it as a sparse matrix file
 def invert_and_save_block(args):
-    block_id, block, variance_threshold, zero_tol, output_dir, chromosome = args
+    block_id, block, variance_threshold, output_dir, chromosome = args
 
     try:
         out_path = os.path.join(output_dir, f"chr{chromosome}_LD_inv_BD_{block_id}.npz")
@@ -71,7 +71,7 @@ def invert_and_save_block(args):
         if block.shape == (1, 1):
             a = block[0, 0]
             a = a if isinstance(a, (int, float)) else float(a)
-            inv = [[0.0]] if abs(a) <= zero_tol else [[1.0 / a]]
+            inv = [[0.0]] if abs(a) <= float(variance_threshold) else [[1.0 / a]]
             save_npz(out_path, csc_matrix(inv))
             return block_id
 
@@ -89,7 +89,6 @@ def invert_and_save_block(args):
 def invert_ld_blocks_parallel_and_save(
     LD_blocks_diag,
     variance_threshold,
-    zero_tol,
     output_dir,
     chromosome,
 ):
@@ -98,7 +97,7 @@ def invert_ld_blocks_parallel_and_save(
     for bid in sorted(LD_blocks_diag.keys()):
         block = LD_blocks_diag[bid]
         res = invert_and_save_block(
-            (bid, block, variance_threshold, zero_tol, output_dir, chromosome)
+            (bid, block, variance_threshold, output_dir, chromosome)
         )
         if res is not None:
             results.append(res)
@@ -106,10 +105,10 @@ def invert_ld_blocks_parallel_and_save(
     return results
 
 
-# ---- Main execution starts here ----
+# Main execution starts here
 
-input_dir = "/nas/pleiomap/Data/UKBB_LD_sparse_mat_R"
-output_dir = "/nas/pleiomap/Data/UKBB_inverted_LD_AdjClust_099_10KAbsR_SW"
+input_dir = "/Folder/With/Sparse/LDMatrix"
+output_dir = "Output/Directory"
 os.makedirs(output_dir, exist_ok=True)
 
 
@@ -117,7 +116,6 @@ def process_chromosomes(
     input_dir,
     output_dir,
     variance_threshold=0.99,
-    zero_tol=1e-12,
     start=1,
     stop=23,
     step=1,
@@ -147,7 +145,6 @@ def process_chromosomes(
         invert_ld_blocks_parallel_and_save(
             LD_blocks_diag,
             variance_threshold=variance_threshold,
-            zero_tol=zero_tol,
             output_dir=output_dir,
             chromosome=chromosome,
         )
@@ -177,7 +174,5 @@ process_chromosomes(
     input_dir=input_dir,
     output_dir=output_dir,
     variance_threshold=0.99,
-    zero_tol=1e-2,
     parallel=True,
-    max_workers=2,
-)
+    max_workers=1)
