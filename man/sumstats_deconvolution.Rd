@@ -36,7 +36,7 @@ These files can be downloaded from Zenodo at \code{zenodo/abcd.fr}.}
 variants in \code{sumstats} to their corresponding positions in the LD inverse
 matrices. This file can be downloaded from Zenodo at \code{zenodo/abcd.fr}.}
 
-\item{parallel}{Indicating whether block-wise computation
+\item{parallel}{Indicating whether Block-wise computation
 should be performed in parallel using \code{parallel::mclapply()}.
 Parallel computation might be RAM expensive.}
 
