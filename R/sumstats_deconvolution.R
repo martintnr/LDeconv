@@ -17,7 +17,7 @@
 #'   variants in `sumstats` to their corresponding positions in the LD inverse
 #'   matrices. This file can be downloaded from Zenodo at `zenodo/abcd.fr`.
 #'
-#' @param parallel Indicating whether Block-wise computation
+#' @param parallel Indicating whether block-wise computation
 #'   should be performed in parallel using `parallel::mclapply()`.
 #'   Parallel computation might be RAM expensive.
 #'
@@ -36,32 +36,32 @@ sumstats_deconvolution <- function(sumstats, ld_inverse_dir, index, parallel=F, 
   # Construct the summary statistics matrix for deconvolution after matching input variants to the variant index.
   # Variants present in `sumstats` but absent from `index` are excluded.
 
-  key <- interaction(DATA$chromosome, DATA$Block, drop = TRUE)
-  pairs <- unique(DATA[c("chromosome", "Block")])
-  pairs <- pairs[order(pairs$chromosome, pairs$Block), ]
+  key <- interaction(DATA$chromosome, DATA$block, drop = TRUE)
+  pairs <- unique(DATA[c("chromosome", "block")])
+  pairs <- pairs[order(pairs$chromosome, pairs$block), ]
   pairs$hit <- tapply(!is.na(DATA$tstat), key, any)[
-    interaction(pairs$chromosome, pairs$Block, drop = TRUE)]
+    interaction(pairs$chromosome, pairs$block, drop = TRUE)]
   pairs$hit[is.na(pairs$hit)] <- FALSE
   pairs$keep <- with(pairs, ave(hit, chromosome, FUN = function(z) {
     z | c(FALSE, z[-length(z)]) | c(z[-1], FALSE)
   }))
   DATA <- DATA[
     key %in% interaction(pairs$chromosome[pairs$keep],
-                         pairs$Block[pairs$keep], drop = TRUE),]
+                         pairs$block[pairs$keep], drop = TRUE),]
 
 
-  # Retain only chromosome-Block units containing at least one observed test statistic, together with their immediately adjacent Blocks.
+  # Retain only chromosome-block units containing at least one observed test statistic, together with their immediately adjacent blocks.
 
-  DATA <- split(DATA, interaction(DATA$Block, DATA$chromosome))
+  DATA <- split(DATA, interaction(DATA$block, DATA$chromosome))
   DATA <- DATA[sapply(DATA, nrow) > 0]
-  # Split the data by chromosome-Block unit for Block-wise computation.
+  # Split the data by chromosome-block unit for block-wise computation.
 
 
   if(parallel == TRUE){
   DATA <- mclapply(X = c(1:length(DATA)), FUN = deconvolution_computation, DATA=DATA, ld_inverse_dir, mc.cores=nbcores)
   }else{ DATA <- lapply(X = c(1:length(DATA)),FUN = deconvolution_computation, DATA=DATA, ld_inverse_dir)
   }
-  # Perform Block-wise deconvolution, optionally in parallel across `nbcores` using `parallel::mclapply()`.
+  # Perform block-wise deconvolution, optionally in parallel across `nbcores` using `parallel::mclapply()`.
 
   DATA <- do.call("rbind", DATA)
   return(DATA)

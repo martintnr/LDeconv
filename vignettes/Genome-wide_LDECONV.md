@@ -17,7 +17,8 @@ statistics for chromosome 19 of triglycerides from UK Biobank GWAS round
 2. The goal is to provide a reproducible example that you can easily
 adapt to your own data. Please note that the available inverse matrices
 online do not correspond to the latest version, which will be available
-upon publication.
+upon publication. Importantly, the index still corresponds to the first
+version of the matrices.
 
 ## Standard setup: load the packages required to run LDeconv and to read the data.
 
@@ -60,7 +61,7 @@ system("mkdir Sumstats")
 system("wget https://broad-ukb-sumstats-us-east-1.s3.amazonaws.com/round2/additive-tsvs/30870_irnt.gwas.imputed_v3.both_sexes.varorder.tsv.bgz -O Sumstats/30870_irnt.gwas.imputed_v3.both_sexes.tsv.bgz")
 
 system("mkdir Index")
-system("wget https://zenodo.org/records/24374737/files/Index_LDeconv.csv -O Index/Index_LDeconv.csv")
+system("wget https://zenodo.org/records/19183010/files/Index_LDeconv.csv -O Index/Index_LDeconv.csv")
 
 system("mkdir Inverse_Matrices")
 #for(chromosome in c(1:22)){ 

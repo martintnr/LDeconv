@@ -58,7 +58,7 @@ deconvolution_computation <- function(X, DATA, ld_inverse_dir){
   Window$tstat[is.na(Window$tstat)] <- 0
 
   # Construct the full analysis window and replace missing test statistics with zero so that they do not contribute to the deconvolution.
-  PATH <- paste0(ld_inverse_dir, "/chr", Central$chromosome[1],"_LD_inv_BD_", Central$Block[1], ".npz")
+  PATH <- paste0(ld_inverse_dir, "/chr", Central$chromosome[1],"_LD_inv_BD_", Central$block[1], ".npz")
   LDinv = scipy_sparse$load_npz(PATH)
   # Load the LD inverse matrix corresponding to the current central block.
 
