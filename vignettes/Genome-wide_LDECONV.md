@@ -1,3 +1,6 @@
+Genome-wide_LDECONV
+================
+
 # Applying LDeconv to new genome-wide summary statistics
 
 If you are reading this vignette, you likely want to apply LDeconv to
@@ -12,7 +15,9 @@ genome-wide inverse LD matrices required for the analysis.
 In this vignette, we illustrate the procedure by deconvoluting summary
 statistics for chromosome 19 of triglycerides from UK Biobank GWAS round
 2. The goal is to provide a reproducible example that you can easily
-adapt to your own data.
+adapt to your own data. Please note that the available inverse matrices
+online do not correspond to the latest version, which will be available
+upon publication.
 
 ## Standard setup: load the packages required to run LDeconv and to read the data.
 

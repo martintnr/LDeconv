@@ -1,7 +1,7 @@
 Package: LDeconv
 Type: Package
 Title: LDeconv : Obtaining LD-adjusted summary statistics through linkage disequilibrium deconvolution
-Version: 0.0.9
+Version: 1.0.0
 Authors@R: person("Martin", "Tournaire", email = "martin.tournaire@curie.fr",
                   role = c("aut", "cre"))
 Description: LDeconv takes as input GWAS summary statistics and outputs LD-adjusted summary statistics
@@ -13,8 +13,8 @@ Imports:
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 Suggests: 
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Config/roxygen2/version: 8.1.1

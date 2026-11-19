@@ -1,3 +1,7 @@
+#This Python code inverse the matrices with sliding-blocks TSVD.
+# It uses truncated SVD to compute pseudoinverses for overlapping windows/blocks of
+# three adjacent LD blocks per chromosome. Save each result as a sparse .npz file.
+
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from numbers import Real

@@ -1,6 +1,6 @@
 ---
 title: "Genome-wide_LDECONV"
-output: rmarkdown::html_vignette
+output: github_document
 vignette: >
   %\VignetteIndexEntry{Genome-wide_LDECONV}
   %\VignetteEngine{knitr::rmarkdown}
@@ -22,7 +22,7 @@ If you are reading this vignette, you likely want to apply LDeconv to your own s
 
 Conceptually, the workflow is fairly simple. With the functions provided, the core operation is essentially matrix multiplication. In practice, the main challenge is downloading, organizing, and using the genome-wide inverse LD matrices required for the analysis.
 
-In this vignette, we illustrate the procedure by deconvoluting summary statistics for chromosome 19 of triglycerides from UK Biobank GWAS round 2. The goal is to provide a reproducible example that you can easily adapt to your own data.
+In this vignette, we illustrate the procedure by deconvoluting summary statistics for chromosome 19 of triglycerides from UK Biobank GWAS round 2. The goal is to provide a reproducible example that you can easily adapt to your own data. Please note that the available inverse matrices online do not correspond to the latest version, which will be available upon publication.
 
 ## Standard setup: load the packages required to run LDeconv and to read the data.
 
