@@ -10,7 +10,7 @@
 #'   by `sumstats_deconvolution()`.
 #'
 #' @param ld_inverse_dir Path to the directory containing the LD inverse matrices.
-#' These files can be downloaded from Zenodo at `zenodo/abcd.fr`.
+#' These files can be downloaded from Zenodo at `https://doi.org/10.5281/zenodo.19183009`.
 #'
 #' @returns A data frame for the processed block containing, for each variant,
 #'   the variant identifier, the original test statistic, and the deconvolved

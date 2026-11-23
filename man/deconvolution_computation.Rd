@@ -13,7 +13,7 @@ deconvolution_computation(X, DATA, ld_inverse_dir)
 by \code{sumstats_deconvolution()}.}
 
 \item{ld_inverse_dir}{Path to the directory containing the LD inverse matrices.
-These files can be downloaded from Zenodo at \code{zenodo/abcd.fr}.}
+These files can be downloaded from Zenodo at \verb{https://doi.org/10.5281/zenodo.19183009}.}
 }
 \value{
 A data frame for the processed block containing, for each variant,

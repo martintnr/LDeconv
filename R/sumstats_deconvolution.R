@@ -11,11 +11,11 @@
 #'   }
 #'
 #' @param ld_inverse_dir Path to the directory containing the LD inverse matrices.
-#' These files can be downloaded from Zenodo at `zenodo/abcd.fr`.
+#' These files can be downloaded from Zenodo at `https://doi.org/10.5281/zenodo.19183009`.
 #'
 #' @param index A variant index based on hg19 coordinates, used to match the
 #'   variants in `sumstats` to their corresponding positions in the LD inverse
-#'   matrices. This file can be downloaded from Zenodo at `zenodo/abcd.fr`.
+#'   matrices. This file can be downloaded from Zenodo at `https://doi.org/10.5281/zenodo.19183009`.
 #'
 #' @param parallel Indicating whether block-wise computation
 #'   should be performed in parallel using `parallel::mclapply()`.

@@ -30,13 +30,13 @@ sumstats_deconvolution(
 }}
 
 \item{ld_inverse_dir}{Path to the directory containing the LD inverse matrices.
-These files can be downloaded from Zenodo at \code{zenodo/abcd.fr}.}
+These files can be downloaded from Zenodo at \verb{https://doi.org/10.5281/zenodo.19183009}.}
 
 \item{index}{A variant index based on hg19 coordinates, used to match the
 variants in \code{sumstats} to their corresponding positions in the LD inverse
-matrices. This file can be downloaded from Zenodo at \code{zenodo/abcd.fr}.}
+matrices. This file can be downloaded from Zenodo at \verb{https://doi.org/10.5281/zenodo.19183009}.}
 
-\item{parallel}{Indicating whether Block-wise computation
+\item{parallel}{Indicating whether block-wise computation
 should be performed in parallel using \code{parallel::mclapply()}.
 Parallel computation might be RAM expensive.}
 
