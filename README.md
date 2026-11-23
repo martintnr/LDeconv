@@ -33,8 +33,8 @@ LDeconv has been tested on Linux: Ubuntu 25.10 and macOS: Tahoe 26.3
 ## Toy example
 
 This example illustrates how to compute LD-adjusted summary statistics
-for variants in the APOE region using UK Biobank round 2 triglyceride
-summary statistics.
+for variants in the APOE region (build hg19) using UK Biobank round 2
+triglyceride summary statistics.
 
 The script below creates a working directory and downloads from Zenodo
 the LDeconv variant index together with the LD inverse matrices required
